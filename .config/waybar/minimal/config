@@ -1,0 +1,187 @@
+{
+    "layer": "top",
+    "height": 30,
+    "modules-left": [
+        "custom/launcher",
+        "custom/files",
+        "custom/terminal",
+        "custom/browser",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "tray",
+        "network",
+        "bluetooth",
+        "cpu",
+        "memory",
+        "backlight",
+        "battery",
+        "pulseaudio",
+        "clock",
+        "custom/power"
+    ],
+    "hyprland/workspaces": {
+        "all-outputs": false,
+        "disable-scroll": true
+    },
+    "hyprland/window": {
+        "max-length": 80,
+        "tooltip": false
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "format": " {:%b %d %Y %R}",
+        "format-alt": "{:%a %d %b w:%V %H:%M}",
+        "tooltip-format": "<span color='#ffffff'><tt><small>{calendar}</small></tt></span>",
+        "calendar": {
+            "mode-mon-col": 4,
+            "weeks-pos": "left",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffffff'><b>{}</b></span>",
+                "weeks": "<span color='#733333'><b>{}</b></span>",
+                "weekdays": "<span color='#21a4df'><b>{}</b></span>",
+                "today": "<span color='#21a4df'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        },
+        "interval": 10
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false,
+        "on-click": "kitty -e htop"
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": [
+            "",
+            ""
+        ]
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
+        "format-alt": "{capacity}% {time}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "",
+        "format-ethernet": "󰈀",
+        "format-linked": "",
+        "format-disconnected": "⚠",
+        "format-alt": "{ifname} {essid} ({signalStrength}%)",
+        "on-click-right": "kitty -e nmtui"
+    },
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "",
+        "format-off": "",
+        "format-connected": " {num_connections}",
+        // "format-connected": " {device_alias}",
+        "tooltip-format": "{controller_address} {status}\n\n{num_connections} connected",
+        "tooltip-format-disabled": "{status}",
+        "tooltip-format-connected": "{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+        "on-click": "bluetooth toggle; pkill -SIGRTMIN+8 waybar",
+        "on-click-right": "exec blueman-manager"
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-alt": "{volume} {icon}",
+        "format-alt-click": "click-right",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "󰥰",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 10,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol-qt",
+        "tooltip": false
+    },
+    "custom/browser": {
+        "format": "Firefox ",
+        "on-click": "exec firefox",
+        "tooltip": false
+    },
+    "custom/terminal": {
+        "format": " ",
+        "on-click": "exec kitty",
+        "tooltip": false
+    },
+    "custom/files": {
+        "format": "Dolphin ",
+        "on-click": "exec dolphin"
+    },
+    "custom/launcher": {
+        "format": "",
+        "on-click": "exec wofi -c ~/.config/wofi/config -I",
+        "tooltip": false
+    },
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "exec ~/.config/scripts/power_menu.sh",
+        "tooltip": false
+    }
+}

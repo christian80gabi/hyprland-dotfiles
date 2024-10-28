@@ -1,0 +1,86 @@
+* {
+    border:        none;
+    border-radius: 10px;
+    font-family:   "JetBrains Mono", "Source Sans Pro", "FontAwesome 6 Free";
+    font-size:     12px;
+    box-shadow:    none;
+    text-shadow:   none;
+    transition-duration: 0s;
+}
+
+window#waybar {
+    color: rgba(247, 247, 247, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid rgba(0, 0, 171, 0.1);
+}
+
+window#waybar.solo {
+    color: rgba(247, 247, 247, 0.8);
+}
+
+#workspaces button{
+    border-radius: 15px;
+    padding: 0 15px;
+    font-weight: bolder;
+    background-color: #181818;
+}
+
+#workspaces button.active, 
+#workspaces button.focused{
+    padding: 0 15px;
+    box-shadow: rgba(33, 164, 223, 1) 1px 0px 0px 0px;    
+    background: rgb(0, 25, 32);
+}
+
+#workspaces button.urgent {
+    color: rgba(33, 164, 223, 1);
+}
+
+#tray,
+#mode, 
+#battery, 
+#cpu, 
+#memory, 
+#network, 
+#bluetooth,
+#pulseaudio, 
+#idle_inhibitor, 
+#temperature,
+#custom-layout,
+#custom-launcher,
+#custom-files,
+#custom-terminal,
+#custom-browser,
+#custom-power,
+#backlight {
+    margin: 0px 6px 0px 15px;
+    min-width: 15px;
+}
+
+#clock {
+    margin: 0px 6px 0px 15px;
+}
+
+#battery.warning {
+   color: rgba(255, 210, 4, 1);
+}
+
+#battery.critical {
+    color: rgba(238, 46, 36, 1);
+}
+
+#battery.charging {
+    color: rgb(166, 231, 186);
+}
+
+#bluetooth.disabled {
+    color: rgba(128, 128, 128, 1);
+}
+
+#bluetooth.off {
+    color: rgba(128, 128, 128, 1);
+}
+
+#bluetooth.connected {
+    color: rgba(115, 186, 37, 1);
+}
