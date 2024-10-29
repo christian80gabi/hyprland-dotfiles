@@ -1,6 +1,6 @@
 # HYPRLAND-DOTFILES
 
-    Minimalistic Hyprland configuration files
+    Minimalistic Hyprland configuration files, with Catpuccin theme
 
 
 ## Screenshots
@@ -54,7 +54,11 @@ $ git clone https://github.com/christian80gabi/hyprland-dotfiles.git
 
 $ cd hyprland-dotfiles
 
+# Coping config files
 $ cp ./.config/* ~/.config/
+
+# Coping wallpaper
+$ cp ./.local/share/wallpapers/* ~/.local/share/wallpapers/
 
 ```
 
@@ -81,3 +85,5 @@ $ tree ~/.config/
 This is released under the [MIT License].
 
 [MIT License]: LICENSE
+
+Wallpaper downloaded from [alphacoders](https://alphacoders.com)
