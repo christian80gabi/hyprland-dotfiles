@@ -10,6 +10,7 @@
     "modules-right": [
         "cpu",
         "memory",
+        "bluetooth",
         "pulseaudio",
         "backlight",
         "battery",
@@ -19,9 +20,7 @@
         "custom/power"
     ],
     "hyprland/workspaces": {
-        "disable-scroll": true,
-        "sort-by-name": true,
-        "format": " {icon} ",
+        "format": " {icon}",
         "format-icons": {
             "default": ""
         }
@@ -31,7 +30,7 @@
         "spacing": 10
     },
     "custom/music": {
-        "format": "  {}",
+        "format": " {} 󰎇",
         "escape": true,
         "interval": 5,
         "tooltip": false,
@@ -42,20 +41,20 @@
     "clock": {
         // "timezone": "Asia/Dubai",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": " {:%d/%m/%Y}",
+        "format-alt": "󰃭 {:%d/%m/%Y}",
         "format": " {:%H:%M}"
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false,
         "on-click": "kitty -e htop"
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% "
     },
     "backlight": {
-        "device": "intel_backlight",
+        // "device": "intel_backlight",
         "format": "{icon}",
+        "tooltip-format": "{icon} {percent}%",
         "format-icons": [
             "",
             "",
@@ -70,31 +69,25 @@
     },
     "battery": {
         "states": {
+            "good": 95,
             "warning": 30,
             "critical": 15
         },
         "format": "{icon}",
         "format-charging": "",
         "format-plugged": "",
-        "format-alt": "{icon}",
+        "format-alt": "{icon} {capacity}%",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
+            "",
+            "",
+            "",
+            "",
+            ""
         ]
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": "",
+        "format-muted": " Muted",
         "format-icons": {
             "default": [
                 "",
@@ -102,7 +95,28 @@
                 " "
             ]
         },
-        "on-click": "pavucontrol"
+        "scroll-step": 10,
+        "on-click": "pavucontrol-qt",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "",
+        "format-ethernet": "󰈀",
+        "format-linked": "",
+        "format-disconnected": "⚠",
+        "format-alt": "{ifname} {essid} ({signalStrength}%)",
+        "on-click-right": "kitty -e nmtui"
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click-right": "exec bluedevil-wizard"
     },
     "custom/lock": {
         "tooltip": false,
@@ -125,7 +139,7 @@
         "tooltip": false
     },
     "custom/files": {
-        "format": "Dolphin ",
+        "format": "󰉋",
         "on-click": "exec dolphin"
     },
     "custom/launcher": {

@@ -24,8 +24,7 @@
         "custom/power"
     ],
     "hyprland/workspaces": {
-        "all-outputs": false,
-        "disable-scroll": true
+        "all-outputs": false
     },
     "hyprland/window": {
         "max-length": 80,
