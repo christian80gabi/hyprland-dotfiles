@@ -2,14 +2,34 @@
 
 * {
   font-family: "NotoSansMono Nerd Font", "JetBrainsMono Nerd Font Mono", "FantasqueSansMono Nerd Font";
-  font-size: 14px;
-  min-height: 0;
 }
 
 #waybar {
   background: transparent;
   color: @text;
   margin: 5px 5px;
+}
+
+#custom-player,
+#custom-launcher,
+#custom-browser,
+#custom-terminal,
+#custom-files,
+#bluetooth,
+#cpu,
+#memory,
+#custom-music,
+#tray,
+#backlight,
+#clock,
+#battery,
+#pulseaudio,
+#language,
+#custom-lock,
+#custom-power {
+  background-color: @surface0;
+  padding: 0.5rem 1rem;
+  margin: 5px 0px;
 }
 
 #workspaces {
@@ -22,7 +42,7 @@
 #workspaces button {
   color: @lavender;
   border-radius: 1rem;
-  padding: 0.4rem;
+  padding: 0.5rem;
 }
 
 #workspaces button.active {
@@ -35,26 +55,41 @@
   border-radius: 1rem;
 }
 
-#bluetooth,
-#cpu,
-#memory,
-#custom-music,
-#tray,
-#backlight,
-#clock,
-#battery,
-#pulseaudio,
-#custom-lock,
-#custom-power {
-  background-color: @surface0;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
+#cpu {
+  margin-left: 1rem;
+  border-radius: 1rem 0px 0px 1rem;
+  color: @rosewater;
 }
 
-#clock {
-  color: @text;
-  border-radius: 0px 1rem 1rem 0px;
+#memory {
   margin-right: 1rem;
+  border-radius: 0px 1rem 1rem 0px;
+  color: @rosewater;
+}
+
+#custom-launcher {
+  border-radius: 1rem 0px 0px 1rem;
+  color: @rosewater;
+}
+
+#custom-player {
+  border-radius: 0px 1rem 1rem 0px;
+  color: @rosewater;
+}
+
+#custom-music {
+  color: @mauve;
+  border-radius: 1rem;
+}
+
+#pulseaudio {
+  color: @mauve;
+  border-radius: 1rem 0px 0px 1rem;
+  margin-left: 1rem;
+}
+
+#backlight {
+  color: @yellow;
 }
 
 #battery {
@@ -69,35 +104,10 @@
   color: @red;
 }
 
-#backlight {
-  color: @yellow;
-}
-
-#backlight,
-#battery {
-  border-radius: 0;
-}
-
-#pulseaudio {
-  color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
-}
-
-#custom-music {
-  color: @mauve;
-  border-radius: 1rem;
-}
-
-#custom-lock {
-  border-radius: 1rem 0px 0px 1rem;
-  color: @lavender;
-}
-
-#custom-power {
-  margin-right: 1rem;
+#clock {
+  color: @text;
   border-radius: 0px 1rem 1rem 0px;
-  color: @red;
+  margin-right: 1rem;
 }
 
 #tray {
@@ -105,18 +115,22 @@
   border-radius: 1rem;
 }
 
-#cpu {
-  border-radius: 1rem 0px 0px 1rem;
-  color: @rosewater;
-}
-
-#memory {
-  margin-right: 1rem;
-  border-radius: 0px 1rem 1rem 0px;
-  color: @rosewater;
-}
-
 #bluetooth {
   border-radius: 1rem;
   color: @blue;
+}
+
+#language {
+  border-radius: 1rem 0px 0px 1rem;
+  color: @maroon;
+}
+
+#custom-lock {
+  color: @lavender;
+}
+
+#custom-power {
+  margin-right: 1rem;
+  border-radius: 0px 1rem 1rem 0px;
+  color: @red;
 }

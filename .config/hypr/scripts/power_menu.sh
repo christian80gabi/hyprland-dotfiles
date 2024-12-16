@@ -1,7 +1,7 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 
-CONFIG="$HOME/.config/wofi/config"
-STYLE="$HOME/.config/wofi/themes/catppuccin/mocha/style.css"
+ENV_PATH="${HOME}/.config/hypr/scripts/env.sh"
+. $ENV_PATH
 
 options=" Poweroff\n Reboot\n Suspend\n Lock\n Logout"
 

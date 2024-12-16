@@ -175,12 +175,12 @@
     },
     "custom/launcher": {
         "format": "",
-        "on-click": "exec wofi -c ~/.config/wofi/config -I",
+        "on-click": "exec ~/.config/hypr/appLauncher.sh",
         "tooltip": false
     },
     "custom/power": {
         "format": "⏻",
-        "on-click": "exec ~/.config/scripts/power_menu.sh",
+        "on-click": "exec ~/.config/hypr/scripts/power_menu.sh",
         "tooltip": false
     }
 }

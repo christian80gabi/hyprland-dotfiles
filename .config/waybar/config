@@ -2,31 +2,37 @@
     "layer": "top",
     "position": "top",
     "modules-left": [
+        "cpu",
+        "memory",
+        "custom/launcher",
+        "custom/files",
+        "custom/browser",
+        "custom/terminal",
+        "custom/player",
         "hyprland/workspaces"
     ],
     "modules-center": [
         "custom/music"
     ],
     "modules-right": [
-        "cpu",
-        "memory",
         "bluetooth",
         "pulseaudio",
         "backlight",
         "battery",
         "clock",
         "tray",
+        "hyprland/language",
         "custom/lock",
         "custom/power"
     ],
     "hyprland/workspaces": {
-        "format": " {icon}",
+        "format": "{name} {icon}",
         "format-icons": {
             "default": ""
         }
     },
     "tray": {
-        "icon-size": 21,
+        // "icon-size": 21,
         "spacing": 10
     },
     "custom/music": {
@@ -69,7 +75,7 @@
     },
     "battery": {
         "states": {
-            "good": 95,
+            // "good": 95,
             "warning": 30,
             "critical": 15
         },
@@ -95,7 +101,7 @@
                 " "
             ]
         },
-        "scroll-step": 10,
+        "scroll-step": 5,
         "on-click": "pavucontrol-qt",
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     },
@@ -116,7 +122,12 @@
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "kitty -e bluetoothctl",
         "on-click-right": "exec bluedevil-wizard"
+    },
+    "hyprland/language": {
+        "format": "{short} {variant}"
+        // "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
     },
     "custom/lock": {
         "tooltip": false,
@@ -125,26 +136,32 @@
     },
     "custom/power": {
         "tooltip": false,
-        "on-click": "exec ~/.config/scripts/power_menu.sh",
+        "on-click": "exec ~/.config/hypr/scripts/power_menu.sh",
         "format": "⏻"
     },
     "custom/browser": {
-        "format": "Firefox ",
+        "format": "",
         "on-click": "exec firefox",
-        "tooltip": false
+        "tooltip-format": "Firefox"
     },
     "custom/terminal": {
         "format": " ",
         "on-click": "exec kitty",
-        "tooltip": false
+        "tooltip-format": "Terminal"
     },
     "custom/files": {
         "format": "󰉋",
-        "on-click": "exec dolphin"
+        "on-click": "exec dolphin",
+        "tooltip-format": "Files"
+    },
+    "custom/player": {
+        "format": "󰎇",
+        "on-click": "exec spotify-launcher",
+        "tooltip-format": "Spotify"
     },
     "custom/launcher": {
         "format": "",
-        "on-click": "exec wofi -c ~/.config/wofi/config -I",
-        "tooltip": false
+        "on-click": "exec ~/.config/hypr/scripts/appLauncher.sh",
+        "tooltip-format": "Launcher"
     }
 }
