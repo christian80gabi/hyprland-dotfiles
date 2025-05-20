@@ -1,44 +1,44 @@
 !/usr/bin/env bash
 
-echo "== Updating System packages to the latest =="
+printf "\n\n == Updating System packages to the latest == \n"
 sudo pacman -Syu
 
 
-echo "== Installing Hyprland ecosystem =="
-sudo pacman -Sy hyprland hyprpolkitagent hyprpaper hyprcursor hypridle hyprlock hyprshot hyprsunset
+printf "\n\n == Installing Hyprland ecosystem =="
+sudo pacman -Sy --noconfirm hyprland hyprpolkitagent hyprpaper hyprcursor hypridle hyprlock hyprsunset
 
 
-echo "== Installing dependencies =="
+printf "\n\n == Installing dependencies =="
 
-echo "1. Systemd startup"
-sudo pacman -Sy uwsm
+printf "\n\n 1. Systemd startup"
+sudo pacman -Sy --noconfirm uwsm
 
-echo "2. Status bar"
-sudo pacman -Sy waybar
+printf "\n\n 2. Status bar"
+sudo pacman -Sy --noconfirm waybar
 
-echo "3. Notification"
-sudo pacman -Sy dunst
+printf "\n\n 3. Notification"
+sudo pacman -Sy --noconfirm dunst
 
-echo "4. Screen sharing"
-sudo pacman -Sy pipewire wireplumber xdg-desktop-portal-hyprland
+printf "\n\n 4. Screen sharing"
+sudo pacman -Sy --noconfirm pipewire wireplumber xdg-desktop-portal-hyprland
 
-echo "5. App launcher"
-sudo pacman -Sy wofi
+printf "\n\n 5. App launcher"
+sudo pacman -Sy --noconfirm wofi
 
-echo "6. Color picker"
-sudo pacman -Sy hyprpicker
+printf "\n\n 6. Color picker"
+sudo pacman -Sy --noconfirm hyprpicker
 
-echo "7. Clipboard manager"
-sudo pacman -Sy cliphist wl-clipboard wl-clip-persist
+printf "\n\n 7. Clipboard manager"
+sudo pacman -Sy --noconfirm cliphist wl-clipboard wl-clip-persist
 
-echo "8. QT and GTK Support"
-sudo pacman -Sy hyprland-qt-support kvantum qt6ct qt5ct nwg-look qt5-wayland qt6-wayland
+printf "\n\n 8. QT and GTK Support"
+sudo pacman -Sy --noconfirm hyprland-qt-support kvantum qt6ct qt5ct nwg-look qt5-wayland qt6-wayland
 
-echo "9. Useful tools"
-sudo pacman -Sy bluetui kitty archlinux-xdg-menu brightnessctl playerctl grim slurp qt5-wayland qt6-wayland
+printf "\n\n 9. Useful tools"
+sudo pacman -Sy --noconfirm bluetui kitty archlinux-xdg-menu xdg-desktop-portal xdg-desktop-portal-gtk brightnessctl playerctl grim slurp qt5-wayland qt6-wayland pavucontrol-qt
 
-echo "10. Fonts"
-sudo pacman -Sy noto-fonts noto-fonts-extra noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono-nerd ttf-jetbrains-mono ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-fantasque-sans-mono ttf-cascadia-code ttf-cascadia-code-nerd ttf-caladea ttf-carlito ttf-inconsolata
+printf "\n\n 10. Fonts"
+sudo pacman -Sy --noconfirm noto-fonts noto-fonts-extra noto-fonts-cjk noto-fonts-emoji ttf-jetbrains-mono-nerd ttf-jetbrains-mono ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-fantasque-sans-mono ttf-cascadia-code ttf-cascadia-code-nerd ttf-caladea ttf-carlito ttf-inconsolata
 
-echo "11. Icons"
-sudo pacman -Sy papirus-icon-theme tela-circle-icon-theme-all
+printf "\n\n 11. Icons"
+sudo pacman -Sy --noconfirm papirus-icon-theme tela-circle-icon-theme-all
