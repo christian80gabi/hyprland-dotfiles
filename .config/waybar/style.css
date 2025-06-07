@@ -1,7 +1,12 @@
 @import "./themes/mocha.css";
 
 * {
-  font-family: "NotoSansMono Nerd Font", "JetBrainsMono Nerd Font Mono", "FantasqueSansMono Nerd Font";
+  font-family: "JetBrainsMono Nerd Font", "NotoSansMono Nerd Font", "Font Awesome 6 Brands", "JetBrains Mono", "Fira Code", "Inconsolata", "Noto Sans", monospace;
+  font-weight: bold;
+  min-height: 0;
+  /* set font-size to 100% if font scaling is set to 1.00 using nwg-look */
+  font-size: 100%;
+  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
 #waybar {

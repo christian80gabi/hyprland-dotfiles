@@ -52,8 +52,8 @@
 @define-color	crust-rgb  rgb(35, 38, 52);
 
 * {
-  font-family: 'Inconsolata Nerd Font', monospace;
-  font-size: 14px;
+  font-family: "JetBrainsMono Nerd Font", "NotoSansMono Nerd Font", "Font Awesome 6 Brands", "JetBrains Mono", "Fira Code", "Inconsolata", "Noto Sans", monospace;
+  font-size: 100%;
 }
 
 /* Window */
