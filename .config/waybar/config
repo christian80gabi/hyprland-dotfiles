@@ -12,13 +12,10 @@
         "hyprland/workspaces"
     ],
     "modules-center": [
-        "custom/music"
-        // "mpris"
+        "mpris"
     ],
     "modules-right": [
         "bluetooth",
-        // "network",
-        // "network#speed",
         "pulseaudio",
         "backlight",
         "battery",
@@ -35,11 +32,9 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
         "spacing": 10
     },
     "clock": {
-        // "timezone": "Asia/Dubai",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "󰃭 {:%d/%m/%Y}",
         "format": " {:%H:%M}"
@@ -71,7 +66,6 @@
         "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)"
     },
     "backlight": {
-        // "device": "intel_backlight",
         "format": "{icon}",
         "tooltip-format": "{icon} {percent}%",
         "format-icons": [
@@ -168,19 +162,19 @@
         "on-click-right": "exec bluedevil-wizard"
     },
     "hyprland/language": {
-        "format": "{short} {variant}"
-        // "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+        "format": "{short} {variant}",
+        "on-click": "hyprctl switchxkblayout all next"
     },
     "mpris": {
-        "interval": 10,
+        "interval": 5,
         "format": "{player_icon} <i>{dynamic}</i>",
         "format-paused": "{status_icon} <i>{artist} {title}</i>",
         "on-click-middle": "playerctl play-pause",
         "on-click": "playerctl previous",
         "on-click-right": "playerctl next",
         "scroll-step": 5.0,
-        // "on-scroll-up": "$HOME/.config/hypr/scripts/volume.sh --inc",
-        // "on-scroll-down": "$HOME/.config/hypr/scripts/volume.sh --dec",
+        "on-scroll-up": "$HOME/.config/hypr/scripts/volume.sh --inc",
+        "on-scroll-down": "$HOME/.config/hypr/scripts/volume.sh --dec",
         "smooth-scrolling-threshold": 1,
         "tooltip": true,
         "tooltip-format": "{status_icon} {dynamic}\nLeft Click: previous\nMid Click: Pause\nRight Click: Next",
@@ -192,12 +186,12 @@
             "mopidy": "",
             "mpv": "󰐹",
             "spotify": "",
-            "vlc": "󰕼",
+            "vlc": "󰕼"
         },
         "status-icons": {
             "paused": "󰐎",
             "playing": "",
-            "stopped": "",
+            "stopped": ""
         },
         "dynamic-order": ["artist", "title"],
         "ignored-players": ["firefox", "zen"],
