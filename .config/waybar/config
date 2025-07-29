@@ -13,9 +13,12 @@
     ],
     "modules-center": [
         "custom/music"
+        // "mpris"
     ],
     "modules-right": [
         "bluetooth",
+        // "network",
+        // "network#speed",
         "pulseaudio",
         "backlight",
         "battery",
@@ -35,27 +38,37 @@
         // "icon-size": 21,
         "spacing": 10
     },
-    "custom/music": {
-        "format": " {} 󰎇",
-        "escape": true,
-        "interval": 5,
-        "tooltip": false,
-        "exec": "playerctl metadata --format='{{ title }}'",
-        "on-click": "playerctl play-pause",
-        "max-length": 50
-    },
     "clock": {
         // "timezone": "Asia/Dubai",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "󰃭 {:%d/%m/%Y}",
-        "format": " {:%H:%M}"
+        "format": " {:%H:%M}"
     },
     "cpu": {
         "format": "{usage}% ",
-        "on-click": "kitty -e btop"
+        "interval": 1,
+        "min-length": 5,
+        "format-alt-click": "click",
+        "format-alt": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% 󰍛",
+        "format-icons": [
+            "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"
+        ],
+        "on-click-right": "kitty -e btop"
     },
     "memory": {
-        "format": "{}% "
+        "interval": 10,
+        "format": "{used:0.1f}G 󰾆",
+        "format-alt": "{percentage}% 󰾆",
+        "format-alt-click": "click",
+        "tooltip": true,
+        "on-click-right": "kitty -e btop"
+    },
+    "disk": {
+        "interval": 30,
+        "path": "/",
+        "format": "{percentage_used}% 󰋊",
+        "tooltip": true,
+        "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)"
     },
     "backlight": {
         // "device": "intel_backlight",
@@ -75,14 +88,17 @@
     },
     "battery": {
         "states": {
-            // "good": 95,
+            "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}",
-        "format-charging": "",
-        "format-plugged": "",
-        "format-alt": "{icon} {capacity}%",
+        "format": "{icon} {capacity}%",
+	    "format-charging": " {capacity}%",
+	    "format-plugged": "󱘖 {capacity}%",
+        "format-alt-click": "click",
+	    "format-full": "{icon} Full",
+	    "format-alt": "{icon} {time}",
+        "format-time": "{H}h {M}min",
         "format-icons": [
             "",
             "",
@@ -106,19 +122,45 @@
         "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "",
-        "format-ethernet": "󰈀",
-        "format-linked": "",
-        "format-disconnected": "⚠",
-        "format-alt": "{ifname} {essid} ({signalStrength}%)",
-        "on-click-right": "kitty -e nmtui"
+        "format": "{ifname}",
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰌘",
+        "format-disconnected": "󰌙",
+        "tooltip-format": "{ipaddr}  {bandwidthUpBits}  {bandwidthDownBits}",
+        "format-linked": "󰈁 {ifname} (No IP)",
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} 󰌘",
+        "tooltip-format-disconnected": "󰌙 Disconnected",
+        "max-length": 30,
+        "format-icons": [
+            "󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+        ],
+        "on-click-right": "$HOME/.config/hypr/scripts/WaybarScripts.sh --nmtui"
+    },
+
+    "network#speed": {
+        "interval": 1,
+        "format": "{ifname}",
+        "format-wifi": "{icon}  {bandwidthUpBytes}  {bandwidthDownBytes}",
+        "format-ethernet": "󰌘  {bandwidthUpBytes}  {bandwidthDownBytes}",
+        "format-disconnected": "󰌙",
+        "tooltip-format": "{ipaddr}",
+        "format-linked": "󰈁 {ifname} (No IP)",
+        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} 󰌘",
+        "tooltip-format-disconnected": "󰌙 Disconnected",
+        "min-length": 24,
+        "max-length": 24,
+        "format-icons": [
+            "󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+        ]
     },
     "bluetooth": {
-        "format": " {status}",
+        "format": "",
         "format-connected": " {device_alias}",
+        "format-disabled": "󰂳",
         "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{status}\t{num_connections} connected",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
@@ -128,6 +170,47 @@
     "hyprland/language": {
         "format": "{short} {variant}"
         // "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+    },
+    "mpris": {
+        "interval": 10,
+        "format": "{player_icon} <i>{dynamic}</i>",
+        "format-paused": "{status_icon} <i>{artist} {title}</i>",
+        "on-click-middle": "playerctl play-pause",
+        "on-click": "playerctl previous",
+        "on-click-right": "playerctl next",
+        "scroll-step": 5.0,
+        // "on-scroll-up": "$HOME/.config/hypr/scripts/volume.sh --inc",
+        // "on-scroll-down": "$HOME/.config/hypr/scripts/volume.sh --dec",
+        "smooth-scrolling-threshold": 1,
+        "tooltip": true,
+        "tooltip-format": "{status_icon} {dynamic}\nLeft Click: previous\nMid Click: Pause\nRight Click: Next",
+        "player-icons": {
+            "chromium": "",
+            "default": "",
+            "firefox": "",
+            "kdeconnect": "",
+            "mopidy": "",
+            "mpv": "󰐹",
+            "spotify": "",
+            "vlc": "󰕼",
+        },
+        "status-icons": {
+            "paused": "󰐎",
+            "playing": "",
+            "stopped": "",
+        },
+        "dynamic-order": ["artist", "title"],
+        "ignored-players": ["firefox", "zen"],
+        "max-length": 50
+    },
+    "custom/music": {
+        "format": " {} 󰎇",
+        "escape": true,
+        "interval": 5,
+        "tooltip": false,
+        "exec": "playerctl metadata --format='{{ title }}'",
+        "on-click": "playerctl play-pause",
+        "max-length": 50
     },
     "custom/lock": {
         "tooltip": false,
