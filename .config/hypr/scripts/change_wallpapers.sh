@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-WALLPAPER_DIRECTORY=~/.local/share/wallpapers/anime
+WALLPAPER_DIRECTORY=$HOME/.local/share/wallpapers/
 
 WALLPAPER=$(find "$WALLPAPER_DIRECTORY" -type f | shuf -n 1)
 
